@@ -85,6 +85,7 @@ public class TabFragment extends Fragment {
                 String txt = editText.getText().toString();
                 if(!txt.isEmpty()){
                     adapter.list.add(txt);
+                    editText.setText("");
                     try {
                         array.put(txt);
                         info.put(tabPosition+"",array);
