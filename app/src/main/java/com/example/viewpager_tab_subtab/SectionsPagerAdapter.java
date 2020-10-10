@@ -1,0 +1,43 @@
+package com.example.viewpager_tab_subtab;
+
+
+
+import android.content.Context;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+
+public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+    @StringRes
+    private static final int[] TAB_TITLES = new int[]{R.string.tabA, R.string.tabB};
+    private Context mContext;
+
+    public SectionsPagerAdapter(@NonNull FragmentManager fm,Context context) {
+        super(fm);
+        mContext = context;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        Fragment fragment;
+        fragment = TabFragment.newInstance(position,mContext);
+        return fragment;
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        return mContext.getResources().getString(TAB_TITLES[position]);
+    }
+
+    @Override
+    public int getCount() {
+        // Show 2 total pages.
+        return 2;
+    }
+}
